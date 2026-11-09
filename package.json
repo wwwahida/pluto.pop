@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "setup-db": "node ./api/database/setup.js"
   },
   "repository": {
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/wwwahida/pluto.pop#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
     "express": "^5.3.0",
