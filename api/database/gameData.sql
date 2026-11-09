@@ -1,4 +1,37 @@
+DROP TABLE IF EXISTS scores;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS teachers;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS questions;
+
+
+CREATE TABLE users (
+  user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  security_question VARCHAR(255), 
+  security_answer_hash VARCHAR(255),
+  role VARCHAR(10) NOT NULL CHECK (role IN ('student', 'teacher'))
+);
+
+CREATE TABLE teachers (
+    teacher_id INT PRIMARY KEY REFERENCES users(user_id) ON DELETE CASCADE,
+    organisation VARCHAR(100) NOT NULL, 
+    class_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE students (
+  student_id INT PRIMARY KEY REFERENCES users(user_id) ON DELETE CASCADE,
+  name VARCHAR(100) NOT NULL,
+  teacher_id INT NOT NULL REFERENCES teachers(teacher_id) ON DELETE CASCADE
+); 
+
+CREATE TABLE scores (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  student_id INT NOT NULL REFERENCES students(student_id) ON DELETE CASCADE,
+  topic VARCHAR(50) NOT NULL,
+  score INT NOT NULL
+);
 
 CREATE TABLE questions (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
