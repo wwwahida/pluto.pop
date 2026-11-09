@@ -30,7 +30,7 @@ class Question {
         return new Question(response.rows[0])
     }
 
-    async delete(id) {
+    static async delete(id) {
         const response = await db.query('DELETE FROM questions WHERE id = $1;', [id])
         if (response.rowCount === 0) {
             throw new Error(`Question with id ${id} not found`)
@@ -38,10 +38,18 @@ class Question {
         return { message: `Question with id ${id} deleted successfully` }
     }
 
-    async update(id, data) {
+    static async update(id, data) {
         const { topic, question_type, question, answer, alt_answers, fun_fact, image_url } = data
         const response = await db.query(
-            'UPDATE questions SET topic = $1, question_type = $2, question = $3, answer = $4, alt_answers = $5, fun_fact = $6, image_url = $7 WHERE id = $8 RETURNING *;',
+            `UPDATE questions SET 
+                topic = COALESCE($1, topic),
+                question_type = COALESCE($2, question_type),
+                question = COALESCE($3, question),
+                answer = COALESCE($4, answer),
+                alt_answers = COALESCE($5, alt_answers),
+                fun_fact = COALESCE($6, fun_fact),
+                image_url = COALESCE($7, image_url)
+            WHERE id = $8 RETURNING *; `,
             [topic, question_type, question, answer, alt_answers, fun_fact, image_url, id]
         )
         return new Question(response.rows[0], { message: `Question with id ${id} updated successfully` })

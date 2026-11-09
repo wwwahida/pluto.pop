@@ -29,8 +29,40 @@ async function create(req, res) {
     }
 }
 
+async function destroy (req, res) {
+    try {
+        const id = req.params.id
+        const question = await Question.delete(id)
+
+        if (!question) {
+            return res.status(404).json({ error: `Question with id ${id} not found` })
+        }
+        
+        res.status(200).json({ message: `Question with id ${id} deleted successfully` })
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}
+
+async function update(req, res) {
+    try {
+        const id = req.params.id
+        const updatedQuestion = await Question.update(id, req.body)
+            
+        if (!updatedQuestion) {
+            return res.status(404).json({ error: `Question with id ${id} not found` })
+        }
+        res.status(200).json(updatedQuestion)
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}
+
+
 module.exports = {
     index,
     show,
-    create
+    create,
+    destroy,
+    update
 }
