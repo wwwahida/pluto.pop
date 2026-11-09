@@ -1,0 +1,41 @@
+:root {
+    --bs-body-font-family: 'Lilita One', system-ui, sans-serif;
+    --quest-purple: #BD69AB;
+    --quest-purple-dark: #BD69AB
+}
+
+body {
+    color: #000;
+}
+
+h1, h2 {
+    font-weight: 400;
+}
+
+.quest-nav .nav-link {
+    color: #000;
+    font-size: clamp(24px, 3vw, 40px);
+}
+
+.quest-nav .nav-link:hover,
+.quest-nav .nav:focus-visible {
+    color: var(--quest-purple-dark);
+}
+
+.quest-title {
+    color: #BD69AB;
+    font-size: clamp(56px, 12vw, 128px);
+    line-height: 1;
+    text-align: center;
+    margin: 48px 0 40px;
+}
+
+.login-heading {
+    font-size: 28px;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.form-control {
+    border: 1px
+}
