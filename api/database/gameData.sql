@@ -39,7 +39,7 @@ CREATE TABLE questions (
   question_type VARCHAR(10) NOT NULL CHECK (question_type IN ('date', 'figure', 'place')),
   question TEXT NOT NULL,
   answer VARCHAR(100) NOT NULL,
-  alt_answers TEXT[] NOT NULL DEFAULT '{}',   -- other accepted answers
+  alt_answers TEXT[] NOT NULL DEFAULT '{}',   
   fun_fact TEXT,
   image_url VARCHAR(255)
 );

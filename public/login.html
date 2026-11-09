@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Quest | Login</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link href="" rel="stylesheet">
+</head>
+<body style="background-color: #FFEEBB;">
+
+    <nav class="navbar navbar-expand-md quest-nav">
+        <div class="container-fluid px-md-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Subjects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Classroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<main class="container py-4">
+    <h1 class="quest-title">StudyQuest</h1>
+
+    <div class="row justify-content-center g-5">
+        
+        <div class="col-12 col-md-6 col-lg-5">
+            <form id="student-form">
+                <h2 class="login-heading">Student Login</h2>
+                <label for="student-email" class="visually-hidden">Student Email</label>
+                <input type="email" id="student-email" class="form-control form-control-lg mb-2" placeholder="Email" autocomplete="current-email" required>
+
+                <label for="student-password" class="visually-hidden">Student Password</label>
+                <input type="password" id="student-password" class="form-control form-control-lg mb-2" placeholder="Password" autocomplete="current-password" required>
+                <button type="submit" class="btn btn-quest btn-lg mt-3">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center g-5">
+        
+        <div class="col-12 col-md-6 col-lg-5">
+            <form id="teacher-form">
+                <h2 class="login-heading">Teacher Login</h2>
+                <label for="teacher-email" class="visually-hidden">Teacher Email</label>
+                <input type="email" id="student-email" class="form-control form-control-lg mb-2" placeholder="Email" autocomplete="current-email" required>
+
+                <label for="teacher-password" class="visually-hidden">Teacher Password</label>
+                <input type="password" id="student-password" class="form-control form-control-lg mb-2" placeholder="Password" autocomplete="current-password" required>
+                <button type="submit" class="btn btn-quest btn-lg mt-3">Login</button>
+            </form>
+        </div>
+    </div>
+   
+    
+</main>
+  
+
+
+
+    
+</body>
+</html>
