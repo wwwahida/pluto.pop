@@ -1,3 +1,25 @@
+function showToast(title, message, type = "info") {
+    const toastElement = document.getElementById("login-toast")
+    const toastTitle = document.getElementById("toast-title")
+    const toastMessage = document.getElementById("toast-message")
+
+    toastTitle.textContent = title
+    toastMessage.textContent = message
+
+    toastElement.classList.remove("text-bg-success", "text-bg-danger", "text-bg-info")
+
+    if (type === "success") {
+        toastElement.classList.add("text-bg-success")
+    } else if (type === "warning") {
+        toastElement.classList.add("text-bg-warning")
+    } else {
+        toastElement.classList.add("text-bg-danger")
+    }
+
+    const toast = bootstrap.Toast.getOrCreateInstance(toastElement, { delay: 5000 })
+    toast.show()
+}
+
 async function login(e, role) {
     e.preventDefault()
 
@@ -20,7 +42,7 @@ async function login(e, role) {
         
         if (response.ok) {
             if (data.role !== role) {
-                alert(`Please log in with a ${role} account.`)
+                showToast("Role Mismatch", `You are trying to log in as a ${role}, but your account is registered as a ${data.role}.`, "warning")
                 return
             }
             e.target.reset()
@@ -31,11 +53,11 @@ async function login(e, role) {
                 window.location.assign('startpage.html')
             }
         } else {
-            alert(data.error)
+            showToast("Login Failed", data.error, "danger")
         }
     } catch (error) {
         console.error('Error:', error)
-        alert('An error occurred. Please try again later.')
+        showToast("Error", 'An error occurred. Please try again later.', "danger")
     }
 }
 
