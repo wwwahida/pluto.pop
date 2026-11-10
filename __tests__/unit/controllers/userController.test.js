@@ -6,7 +6,7 @@ const securityQuestions = require('../../../api/utils/securityQuestions')
 jest.mock('../../../api/model/User')
 jest.mock('bcrypt')
 
-// fake Express response: status() returns res so .status(200).json(...) chains
+
 const mockRes = () => {
   const res = {}
   res.status = jest.fn().mockReturnValue(res)
@@ -100,5 +100,105 @@ describe('getSecurityQuestions', () => {
 
     expect(res.status).toHaveBeenCalledWith(200)
     expect(res.json).toHaveBeenCalledWith(securityQuestions)
+  })
+})
+
+describe('getByRole', () => {
+  it('returns 200 and users for the role', async () => {
+    const teachers = [{ user_id: 1, role: 'teacher' }]
+    User.getByRole.mockResolvedValue(teachers)
+    const res = mockRes()
+
+    await userController.getByRole({ params: { role: 'teacher' } }, res)
+
+    expect(User.getByRole).toHaveBeenCalledWith('teacher')
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(res.json).toHaveBeenCalledWith(teachers)
+  })
+
+  it('returns 500 if the model throws', async () => {
+    User.getByRole.mockRejectedValue(new Error('db down'))
+    const res = mockRes()
+
+    await userController.getByRole({ params: { role: 'teacher' } }, res)
+
+    expect(res.status).toHaveBeenCalledWith(500)
+    expect(res.json).toHaveBeenCalledWith({ error: 'db down' })
+  })
+})
+
+describe('destroy', () => {
+  it('returns 200 and the result', async () => {
+    User.delete.mockResolvedValue({ message: 'deleted' })
+    const res = mockRes()
+
+    await userController.destroy({ params: { id: '3' } }, res)
+
+    expect(User.delete).toHaveBeenCalledWith('3')
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(res.json).toHaveBeenCalledWith({ message: 'deleted' })
+  })
+
+  it('returns 500 if the model throws', async () => {
+    User.delete.mockRejectedValue(new Error('nope'))
+    const res = mockRes()
+
+    await userController.destroy({ params: { id: '3' } }, res)
+
+    expect(res.status).toHaveBeenCalledWith(500)
+    expect(res.json).toHaveBeenCalledWith({ error: 'nope' })
+  })
+})
+
+describe('createUser (remaining branches)', () => {
+  const validStudent = {
+    email: 's@b.com',
+    password: 'pw',
+    security_question: securityQuestions[0],
+    security_answer: 'Answer',
+    role: 'student',
+    name: 'Sam',
+    teacher_id: 1
+  }
+
+  it('returns 400 if a student is missing teacher_id', async () => {
+    const res = mockRes()
+    await userController.createUser(
+      { body: { ...validStudent, teacher_id: undefined } }, res
+    )
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.json).toHaveBeenCalledWith({ error: 'Missing required fields for student' })
+  })
+
+  it('returns 400 for an invalid security question', async () => {
+    const res = mockRes()
+    await userController.createUser(
+      { body: { ...validStudent, security_question: 'Not a real question' } }, res
+    )
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.json).toHaveBeenCalledWith({ error: 'Invalid security question' })
+  })
+
+  it('creates a student and returns 201', async () => {
+    bcrypt.hash.mockResolvedValue('hashed')
+    User.create.mockResolvedValue({ user_id: 9, email: 's@b.com', role: 'student' })
+    const res = mockRes()
+
+    await userController.createUser({ body: validStudent }, res)
+
+    expect(res.status).toHaveBeenCalledWith(201)
+  })
+
+  it('returns 500 if User.create throws', async () => {
+    bcrypt.hash.mockResolvedValue('hashed')
+    User.create.mockRejectedValue(new Error('duplicate email'))
+    const res = mockRes()
+
+    await userController.createUser({ body: validStudent }, res)
+
+    expect(res.status).toHaveBeenCalledWith(500)
+    expect(res.json).toHaveBeenCalledWith({ error: 'duplicate email' })
   })
 })
