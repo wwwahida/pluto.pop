@@ -128,3 +128,106 @@ h1, h2 {
   --bs-btn-active-border-color: #6F3A68;
   --bs-btn-focus-shadow-rgb: 138, 75, 130;
 }
+
+.section-heading {
+    color: var(--quest-purple);
+    font-size: clamp(2rem, 3.6vw, 3.5rem);
+    text-shadow: 2px 3px 0 #5E2A55;
+    margin-bottom: 1.5rem;
+}
+
+.subject-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.subject-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--quest-pill);
+    border-radius: 3rem;
+    color: #000;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    text-decoration: none;
+}
+
+.subject-icon {
+    height: clamp(3rem, 7vw, 6rem);
+    width: clamp(3rem, 7vw, 6rem);
+    object-fit: contain;
+}
+
+.featured-grid {
+    max-width: 32rem;
+}
+.feature-card {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    padding: 1.25rem 1.5rem;
+    background: var(--quest-pill);
+    border-radius: 2rem;
+    color: #000;
+    font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+    line-height: 1.15;
+    text-decoration: none;
+}
+
+.start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 3rem;
+    background: var(--quest-purple);
+    color: white;
+    border-radius: 50rem;
+    box-shadow: 0 8px 0 #5E2A55;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1;
+    text-decoration: none;
+}
+
+.start-btn:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #5E2A55;
+}
+
+.start-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: white;
+    stroke: white;
+    stroke-width: 12;
+    stroke-linejoin: round;
+}
+
+/* .subject-card,
+.featured-card {
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+
+.subject-card:hover,
+.featured-card:hover,
+.subject-card:focus-visible,
+.featured-card:focus-visible {
+    background: #D5DCEA;
+    color: #000;
+    transform: translateY(-3px);
+} 
+
+.subject-card:focus-visible,
+.featured-card:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .subject-card,
+    .featured-card {
+        transition: none;
+    }
+} */
