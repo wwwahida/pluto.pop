@@ -1,27 +1,43 @@
-document.getElementById("student-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+async function login(e, role) {
+    e.preventDefault()
 
-    const form = new FormData(e.target);
+    const form = new FormData(e.target)
+
+    const email = form.get('email')
+    const password = form.get('password')
 
     const options = {
-        method: "POST",
+        method: 'POST',
         headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            username: form.get("email"),
-            password: form.get("password")
-        })
+        body: JSON.stringify({ email, password })
     }
 
-    const response = await fetch("http://localhost:3000/users/login", options);
-    const data = await response.json();
+    try {
+        const response = await fetch("/auth/login", options)
+        const data = await response.json()
+        
+        if (response.ok) {
+            if (data.role !== role) {
+                alert(`Please log in with a ${role} account.`)
+                return
+            }
+            e.target.reset()
+            sessionStorage.setItem('token', data.token)
+            if (data.role === 'student') {
+                window.location.assign('subjectpage.html')
+            } else if (data.role === 'teacher') {
+                window.location.assign('startpage.html')
+            }
+        } else {
+            alert(data.error)
+        }
+    } catch (error) {
+        console.error('Error:', error)
+        alert('An error occurred. Please try again later.')
+    }
+}
 
-    if (response.status == 200) {
-        localStorage.setItem("token", data.token);
-        window.location.assign("gamepage.html");
-      } else {
-        alert(data.error);
-      }
-})
+document.getElementById("student-form").addEventListener("submit", (e) => login(e, 'student'))
+document.getElementById("teacher-form").addEventListener("submit", (e) => login(e, 'teacher'))
