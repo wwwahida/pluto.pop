@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1794308481890" clover="3.2.0">
-  <project timestamp="1794308481890" name="All files">
-    <metrics statements="127" coveredstatements="76" conditionals="34" coveredconditionals="26" methods="25" coveredmethods="10" elements="186" coveredelements="112" complexity="0" loc="127" ncloc="127" packages="4" files="6" classes="6"/>
+<coverage generated="1794313686775" clover="3.2.0">
+  <project timestamp="1794313686775" name="All files">
+    <metrics statements="127" coveredstatements="97" conditionals="34" coveredconditionals="28" methods="25" coveredmethods="18" elements="186" coveredelements="143" complexity="0" loc="127" ncloc="127" packages="4" files="6" classes="6"/>
     <package name="controllers">
       <metrics statements="67" coveredstatements="67" conditionals="26" coveredconditionals="26" methods="10" coveredmethods="10"/>
       <file name="gameController.js" path="/Users/marcus/coding/pluto.pop/api/controllers/gameController.js">
@@ -88,32 +88,32 @@
       </file>
     </package>
     <package name="model">
-      <metrics statements="55" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="15" coveredmethods="0"/>
+      <metrics statements="55" coveredstatements="25" conditionals="8" coveredconditionals="2" methods="15" coveredmethods="8"/>
       <file name="GameModels.js" path="/Users/marcus/coding/pluto.pop/api/model/GameModels.js">
-        <metrics statements="23" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
+        <metrics statements="23" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="8"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
       </file>
       <file name="User.js" path="/Users/marcus/coding/pluto.pop/api/model/User.js">
         <metrics statements="32" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
