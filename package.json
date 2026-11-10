@@ -12,6 +12,9 @@
     "integrationTests": "jest --testPathPatterns=/integration/ --watchAll --detectOpenHandles --runInBand --verbose",
     "coverage": "jest --coverage --testPathPatterns=/unit/"
   },
+  "jest": {
+    "collectCoverageFrom": ["api/**/*.js"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wwwahida/pluto.pop.git"
