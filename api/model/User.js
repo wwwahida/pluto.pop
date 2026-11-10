@@ -23,7 +23,7 @@ class User {
     static async findByEmail(email) {
         const response = await db.query('SELECT * FROM users WHERE email = $1;', [email])
         if (response.rowCount === 0) {
-            throw new Error(`User with email ${email} not found`)
+            return null
         }
         return new User(response.rows[0])
     }
