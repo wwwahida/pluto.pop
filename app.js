@@ -6,7 +6,9 @@ app.use(express.static('public'))
 
 const userRouter = require('./api/routers/userRoutes');
 const gameRouter = require('./api/routers/gameRoutes');
+const authRouter = require('./api/routers/authRoutes');
 
+app.use('/auth', authRouter);
 app.use('/users', userRouter);
 app.use('/game', gameRouter);
 

@@ -3,34 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"></link>
-    <title>Pluto.Pop | Play</title>
+    <title>Study Quest| Play</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <header class="navbar game-navbar" data-bs-theme="dark">
-        <div class="container-fluid position-relative">
-            <button class="navbar-toggler" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#game-menu">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <h1 class="game-title position-absolute top-50 start-50 translate-middle m-0">Pluto.pop()</h1>
-        </div>
-    </header>
+<body style="background-color: #FFEEBB;">
 
-    <div class="offcanvas offcanvas-start game-menu" tabindex="-1" id="game-menu" data-bs-theme="dark">
-    <div class="offcanvas-header">
-      <h2 class="offcanvas-title" id="game-menu-label">Menu</h2>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-    </div>
-    <div class="offcanvas-body">
-      <nav class="nav flex-column">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/game.html">Play</a>
-        <a class="nav-link" href="/leaderboard.html">Leaderboard</a>
-        <a class="nav-link" href="/login.html">Log out</a>
+    <nav class="navbar navbar-expand-md quest-nav">
+        <div class="container-fluid px-md-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="login.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="subjectpage.html">Subjects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Classroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class container py-3>
+
+      <nav>
+        <ol class="quiz-context list-unstyled d-flex justify-content-around mb-4">
+          <li class="context-pill">History</li>
+          <li class="context-pill">Quizzes</li>
+          <li class="context-pill">WWII</li>
+        </ol>
       </nav>
-    </div>
-  </div>
-    
+
+      <section class="quiz mx-auto">
+        <img id="question-image" class="question-image" src="assets/images/question3.jpg">
+
+        <h2 id="question-text" class="question-text">3. In which year did the D-Day landings take place?</h2>
+
+        <form id="answer-form" class="answer-form" autocomplete="off">
+            <label for="answer-input" class="visually-hidden">Your answer</label>
+            <input type="text" id="answer-input" class="form-control form-control-lg answer-input" placeholder="Enter a year" required>
+            <button type="submit" id="submit-btn" class="btn btn-submit rounded pill">Submit</button> 
+        </form>
+      </section>
+    </main>
 </body>
 </html>

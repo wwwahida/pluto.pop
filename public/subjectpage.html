@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Quest | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md quest-nav">
+        <div class="container-fluid px-md-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="login.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Subjects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Classroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid px-md-5 py-4">
+        <h1 class="visually-hidden">StudyQuest Home</h1>
+
+        <div class="row g-5">
+
+            <section class="col-12 col-md-6">
+                <h2 class="section-heading" id="recent-heading">Your Recent Subjects</h2>
+                <ul class="list-unstyled subject-list">
+                    <li>
+                        <a class="subject-card" href="">
+                            <span>History</span>
+                            <img class="subject-icon" src="./assets/images/history.jpg">
+                        </a>
+                    </li>
+
+                     <li>
+                        <a class="subject-card" href="">
+                            <span>Geography</span>
+                            <img class="subject-icon" src="./assets/images/geography.jpg">
+                        </a>
+                    </li>
+
+                     <li>
+                        <a class="subject-card" href="">
+                            <span>English</span>
+                            <img class="subject-icon" src="./assets/images/english.jpg">
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="col-12 col-md-4 offset-md-2">
+                <h2 class="section-heading" id="feature-heading">Featured Quizzes</h2>
+
+                <ul class="list-unstyled row row-cols-2 g-4 featured-grid">
+                    <li class="col"><a class="feature-card" href="startpage.html">World <br>War II Quiz</a></li>
+                    <li class="col"><a class="feature-card" href="">Whose <br>flag is this?</a></li>
+                    <li class="col"><a class="feature-card" href="">Jane Austen <br>Quiz</a></li>
+                    <li class="col"><a class="feature-card" href="">Guess the <br>King?</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+  
+</body>
+</html>
