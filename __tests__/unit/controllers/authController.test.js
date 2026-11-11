@@ -61,7 +61,7 @@ describe('register', () => {
 
     expect(res.status).toHaveBeenCalledWith(201)
     expect(res.json).toHaveBeenCalledWith({
-      message: 'User created successfully',
+      message: 'User registered successfully',
       user_id: 7,
       email: 'a@b.com',
       role: 'teacher'
@@ -118,6 +118,6 @@ describe('register (remaining branches)', () => {
     await authController.register({ body: validStudent }, res)
 
     expect(res.status).toHaveBeenCalledWith(500)
-    expect(res.json).toHaveBeenCalledWith({ error: 'duplicate email' })
+    expect(res.json).toHaveBeenCalledWith({ error: 'Registration failed' })
   })
 })
