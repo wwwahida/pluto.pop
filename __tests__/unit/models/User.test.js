@@ -70,6 +70,40 @@ describe('User.create', () => {
     expect(client.query.mock.calls[2][0]).toBe('ROLLBACK')
     expect(client.release).toHaveBeenCalledTimes(1)
   })
+
+  it('creates a student and commits', async () => {
+  client.query
+    .mockResolvedValueOnce({})
+    .mockResolvedValueOnce({ rows: [{ user_id: 2, email: 's@b.com', role: 'student' }] })
+    .mockResolvedValueOnce({})
+    .mockResolvedValueOnce({})
+
+  const user = await User.create({
+    email: 's@b.com',
+    password_hash: 'hash',
+    security_question: 'q',
+    security_answer_hash: 'ahash',
+    role: 'student',
+    name: 'Sam',
+    teacher_id: 1
+  })
+
+  expect(user.role).toBe('student')
+  expect(client.query.mock.calls[2][1]).toEqual([2, 'Sam', 1])
+})
+
+it('rolls back and throws for an invalid role', async () => {
+  client.query
+    .mockResolvedValueOnce({})
+    .mockResolvedValueOnce({ rows: [{ user_id: 3, role: 'admin' }] })
+    .mockResolvedValueOnce({})
+
+  await expect(User.create({ email: 'x@b.com', role: 'admin' }))
+    .rejects.toThrow('Invalid role')
+
+  expect(client.query.mock.calls[2][0]).toBe('ROLLBACK')
+})
+
 })
 
 describe('User.delete', () => {
