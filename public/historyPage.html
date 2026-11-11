@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Quest | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body style="background-color: #FFEEBB;">
+    <nav class="navbar navbar-expand-md quest-nav">
+        <div class="container-fluid px-md-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-nav">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Subjects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Classroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<main class="container-fluid px-md-5 py-4">
+    <div class="row justify-content-center g-5">
+        <div class="col-sm-6 col-lg-6">
+                <div class ="subject-card">
+                    <h1 class="subject-heading">History</h1>
+                </div>
+                <div class ="subject-card flex-column align-items-start mt-4 rounded-4 borderColor=#e4e8ef">
+                    <h2 class="subject-heading">Quizzes</h2>
+                     <div class="col-sm-6 col-lg-6">
+                        <button type="button" class="btn btn-quest btn-lg mt-3">World War I</button>
+                        <button type="button" class="btn btn-quest btn-lg mt-3">World War II</button>
+                        <button type="button" class="btn btn-quest btn-lg mt-3">Ancient Rome</button>
+                        <button type="button" class="btn btn-quest btn-lg mt-3">English Civil War</button>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-6">
+            <div class ="subject-card">
+                <h3 class="game-heading">Average Score: 85%<br> 1st in your class!</h3>
+            </div>
+            <section class="subject-card flex-column align-items-start mt-4 rounded-4 border">
+                <h2 class="game-heading">Games</h2>
+                <button type="button" class="btn btn-quest btn-lg mt-3">World War II Quiz</button>
+                <button type="button" class="btn btn-quest btn-lg mt-3">Spot the flag!</button>
+                <button type="button" class="btn btn-quest btn-lg mt-3">Jane Austen Quiz</button>
+                <button type="button" class="btn btn-quest btn-lg mt-3">GeoGuesser</button> 
+            </section>
+        </div> 
+
+    </div>
+
+</main> 
+</body>
+</html>
