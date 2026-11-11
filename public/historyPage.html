@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Quest | Hostory</title>
+    <title>Study Quest | History</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
@@ -19,7 +19,16 @@
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="navbar-nav w-100 justify-content-between">
                     <li class="nav-item"><a class="nav-link" href="">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Subjects</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="subjects-dropdown" role="button" data-bs-toggle="dropdown">Subjects</a>
+                        <ul class="dropdown-menu subject-menu">
+                            <li class="dropdown-item subject-menu-item">History</li>
+                            <li class="dropdown-item subject-menu-item">Geography</li>
+                            <li class="dropdown-item subject-menu-item">English</li>
+                            <li class="dropdown-item subject-menu-item">French</li>
+                            <li class="dropdown-item subject-menu-item">Drama</li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="">Classroom</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Stats</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
@@ -43,7 +52,7 @@
             <div class="d-flex gap-3 h-100">
                 <div class="info-pill flex-grow-1">
                     <p class="pill-text">Average Score: 85%<br>1st in your class!</p>
-                    <img class="pill-icon" src="">
+                    <img class="pill-icon" src="./assets/images/medal.jpg">
                 </div>
                 <dic class="info-pill xp-pill">
                     <p class="pill-text">Total XP:</p>
@@ -54,7 +63,7 @@
     </div>
 
     <div class="row g-4">
-        <section class="col-12 col-md-6">
+        <section class="col-12 col-sm-6">
             <div class="info-panel">
                 <h2 class="panel-heading" id="quizzes-heading">Quizzes</h2>
                 <ul class="list-unstyled quiz-list">
@@ -66,30 +75,28 @@
             </div>
         </section>
 
-        <section class="col-12 col-md-6">
-            <dic class="info-panel">
+        <section class="col-12 col-sm-6">
+            <div class="info-panel">
                 <h2 class="panel-heading" id="games-heading">Games</h2>
                 <ul class="list-unstyled game-list">
                     <li>
-                        <a class="game-link" href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="game-logo" src="" >
+                        <a class="game-link" href="https://timeguessr.com/game-settings" target="_blank">
+                            <img class="game-logo" src="./assets/images/timeguessr.jpg" >
                         </a>
+                        <p>Find when and where a historical photo was taken</p>
                     </li>
                     <li>
-                         <a class="game-link" href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="game-logo" src="">
+                         <a class="game-link" href="https://historyguesser.app/" target="_blank">
+                            <img class="game-logo" src="./assets/images/historyguessr.jpg">
                         </a>
+                         <p>Look at a panorama from history and figure out when it's from</p>
                     </li>
-                    <li>
-                        <a class="game-link" href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="game-logo" src="" >
-                        </a>
-                        </li>
                 </ul>
-            </dic>
+            </div>
         </section>
     </div>
 
 </main> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

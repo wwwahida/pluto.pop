@@ -149,6 +149,7 @@ h1, h2 {
     padding: 1rem 2rem;
     background: var(--quest-pill);
     border-radius: 3rem;
+    border: 2px solid #222;
     color: #000;
     font-size: clamp(2rem, 4.5vw, 4rem);
     text-decoration: none;
@@ -170,6 +171,7 @@ h1, h2 {
     padding: 1.25rem 1.5rem;
     background: var(--quest-pill);
     border-radius: 2rem;
+    border: 2px solid #222;
     color: #000;
     font-size: clamp(1.25rem, 2.6vw, 2.25rem);
     line-height: 1.15;
@@ -234,6 +236,7 @@ h1, h2 {
 
 .info-pill {
     display: flex;
+    border: 2px solid #222;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
@@ -258,6 +261,105 @@ h1, h2 {
 .pill-text {
     margin: 0;
     font-size: clamp(1.1rem, 2vw, 1.6rem);
+    line-height: 1.2;
+}
+
+.xp-pill {
+    flex-direction: column;
+    border: 2px solid #222;
+    justify-content: center;
+    gap: 0;
+    text-align: center;
+}
+
+.xp-value {
+    margin: 0;
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    line-height: 1.1;
+    color: var(--quest-blue, #2F6FCE);
+}
+
+.info-panel {
+    height: 100%;
+    padding: 1.25rem 1.5rem 1.5rem;
+    background: var(--quest-pill);
+    border: 2px solid #333;
+    border-radius: 1.5rem;
+}
+
+.panel-heading {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.quiz-list,
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.game-list {
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.quiz-link {
+    color: #000;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    text-decoration: none;
+}
+
+.game-logo {
+    display: block;
+    height: clamp(2.25rem, 4vw, 3.25rem);
+    width: auto;
+    max-width: 100%;
+}
+
+.quiz-link[href]:hover,
+.quiz-link[href]:focus-visible {
+    color: #8A4B82;
+    text-decoration: underline;
+}
+
+.quiz-link:not([href]) {
+    cursor: default;         
+}
+
+.game-logo {
+    display: block;
+    height: clamp(2.25rem, 4vw, 3.25rem);
+    width: auto;
+    max-width: 100%;
+}
+
+.game-link:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 3px;
+}
+
+.subject-menu {
+  background-color: #ffefbd;
+  border: 2px solid #222;
+  border-radius: 16px;
+  padding: 8px;
+  min-width: 170px;
+}
+
+.subject-menu-item {
+  color: #111;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.subject-menu-item:hover,
+.subject-menu-item:focus {
+  background-color: #BD69AB;
+  color: #111;
 }
 /* .subject-card,
 .featured-card {
