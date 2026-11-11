@@ -232,6 +232,33 @@ h1, h2 {
     font-size: clamp(1.25rem, 2.6vw, 2.25rem);
 }
 
+.info-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
+    padding: 0.75rem 1.5rem;
+    background: var(--quest-pill);
+    border-radius: 3rem;
+}
+
+.pill-title {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+}
+
+.pill-icon {
+    height: clamp(3rem, 6vw, 5rem);
+    width: auto;
+    object-fit: contain;
+}
+
+.pill-text {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
 /* .subject-card,
 .featured-card {
     transition: transform 0.15s ease, background-color 0.15s ease;
@@ -259,15 +286,3 @@ h1, h2 {
         transition: none;
     }
 } */
-
-.subject-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background:#e4e8ef;
-    border-radius: 3rem;
-    color: #000;
-    font-size: clamp(2rem, 4.5vw, 4rem);
-    text-decoration: none;
-}
