@@ -35,3 +35,23 @@ describe('PUT /game/:id', () => {
     expect(res.statusCode).toBe(404)
   })
 })
+
+describe('POST /game', () => {
+    it('creates a question and returns 201', async () => {
+        const text = `integration-test-${Date.now()}`
+
+        const res = await request(app).post('/game').send({
+            topic: 'integration-test',
+            question_type: 'place',
+            question: text,
+            answer: 'a',
+            alt_answers: [],
+            fun_fact: 'f',
+            image_url: null
+        })
+        expect(res.statusCode).toBe(201)
+        expect(res.body.question).toBe(text)
+
+        await db.query('DELETE FROM questions WHERE question = $1', [text])
+    }) 
+})
