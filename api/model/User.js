@@ -20,6 +20,14 @@ class User {
         return response.rows.map(row => new User(row))
     }
 
+    static async findByEmail(email) {
+        const response = await db.query('SELECT * FROM users WHERE email = $1;', [email])
+        if (response.rowCount === 0) {
+            return null
+        }
+        return new User(response.rows[0])
+    }
+
     static async create(data) {
         const { email, password_hash, security_question, security_answer_hash, role, organisation, class_name, name, teacher_id } = data
         const client = await db.connect()
