@@ -71,7 +71,7 @@ h1, h2 {
 }
 
 .quiz-context {
-    gap: 12px;
+    gap: 150px;
     flex-wrap: wrap;
 }
 
@@ -179,8 +179,8 @@ h1, h2 {
 .start-btn {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 3rem;
+    gap: 0;
+    padding: 2rem 3.5rem;
     background: var(--quest-purple);
     color: white;
     border-radius: 50rem;
@@ -203,7 +203,62 @@ h1, h2 {
     stroke-width: 12;
     stroke-linejoin: round;
 }
+.start-area {
+    padding-top: 11rem;
+}
 
+.correct-card {
+    background-color: #0F7D36;
+    color: white;
+    border-radius: 28px;
+    padding: 14px 18px;
+    font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+    margin-top: 10px;
+}
+
+.question-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.next-button {
+    background-color: #0F7D36;
+    color: white;
+    border: 0;
+    padding: 20px 14px;
+    border-radius: 12px 28px 28px 12px;
+    font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+}
+
+.info-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
+    padding: 0.75rem 1.5rem;
+    background: var(--quest-pill);
+    border-radius: 3rem;
+}
+
+.pill-title {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+}
+
+.pill-icon {
+    height: clamp(3rem, 6vw, 5rem);
+    width: auto;
+    object-fit: contain;
+}
+
+.pill-text {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
 /* .subject-card,
 .featured-card {
     transition: transform 0.15s ease, background-color 0.15s ease;
