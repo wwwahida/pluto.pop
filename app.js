@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 
 app.use(cors({
-    origin: 'http://localhost:process.env.PORT',
+    origin: process.env.FRONTEND_URL
 }))
 
 app.use(express.json())
