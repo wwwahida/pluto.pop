@@ -1,5 +1,10 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+
+app.use(cors({
+    origin: 'http://localhost:process.env.PORT',
+}))
 
 app.use(express.json())
 app.use(express.static('public'))
