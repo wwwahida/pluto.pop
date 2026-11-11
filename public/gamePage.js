@@ -63,7 +63,7 @@ function showQuestions() {
     }
 
     questionText.textContent = `${questionNumber + 1}. ${question.question}`
-    questionImage = new URL(question.image_url, API_URL).href; // Creates a new URL using the API address for the image
+    questionImage.src = new URL(question.image_url, API_URL).href; // Creates a new URL using the API address for the image
     // questionImage.hidden = !question.image_url // No image is displayed if there is no image url
 
     // Resets all the quiz controls after each question
@@ -100,7 +100,7 @@ questionForm.addEventListener("submit", (e) => {
 
     nextButton.addEventListener("click", () => {
         questionNumber = questionNumber + 1
-        showQuestion()
+        showQuestions()
         answerInput.focus() // Puts the cursor in the answer box without having to click it. 
 
     })
