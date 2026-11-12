@@ -7,7 +7,9 @@ app.use(cors({
 }))
 
 app.use(express.json())
-app.use(express.static('public'))
+app.use(express.static('public', {
+    extensions: ['html']
+}))
 
 const userRouter = require('./api/routers/userRoutes');
 const gameRouter = require('./api/routers/gameRoutes');
