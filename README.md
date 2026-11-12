@@ -2,9 +2,11 @@
 
 ## Overview 
 
-A website that allows students to select topics of interest, and answer questions in a fun, interactive quiz-style format. These are for **non-STEM** subjects, with our application showing **History** as an example subject.
+StudyQuest is a hub website where students can view their specific subjects and take part in quizzes and games related to topics they’re studying. Students can earn XP and view leaderboards, introducing a gamified and competitive aspect to learning that will help motivate them to revise.
 
-Teachers are able to view their students scores and track progress over a range of subjects.
+Teachers are able to set and create quizzes, view their students' scores and track progress over a range of classes. 
+
+This site is for **non-STEM** subjects, with our application showing **History** as an example subject.
 
 ## Getting Started
 
@@ -55,6 +57,38 @@ Teachers are able to view their students scores and track progress over a range 
     - Run `npm run dev` to run the server in development mode
     - Run `npm run start` to run the server in production mode
 
+## Backend
+
+The backend is a REST API built with Node.js and Express, using PostgreSQL for storage. It handles user accounts, authentication and quiz questions, and returns JSON.
+
+### Project structure
+
+```
+api/
+  controllers/   request handling
+  database/      connection and setup
+  middleware/    authentication and logging
+  model/         database queries
+  routers/       URL to controller mapping
+  utils/         shared helpers
+app.js           creates the Express app
+index.js         starts the server
+```
+
+### Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/game` | Get all questions |
+| GET | `/game/:topic` | Get questions for a topic |
+| POST | `/game` | Create a question |
+| PUT | `/game/:id` | Update a question |
+| DELETE | `/game/:id` | Delete a question |
+| GET | `/users` | Get all users |
+| GET | `/users/:role` | Get users by role |
+| POST | `/users` | Create a user |
+| DELETE | `/users/:id` | Delete a user |
+
 ## Database Schema
 
 The database contains multiple tables. An example of one is shown below. These are created with __Postgres__.
@@ -72,8 +106,47 @@ The database contains multiple tables. An example of one is shown below. These a
   image_url VARCHAR(255)
 ;
 ```
+## Testing
+
+| Command | What it runs |
+|---|---|
+| `npm run unitTests` | Controller and model tests, with mocked dependencies |
+| `npm run integrationTests` | Route tests against a real database |
+| `npm run coverage` | Coverage report for the unit tests |
+
+Unit tests mock the database, so need no setup to run. Integration tests need a `.env` with `DB_URL` and a set-up database, and they add and remove temporary test rows.
+
+## Frontend
+
+The frontend is built with HTML, CSS and Javascript. It's served by the Express app from the `public/` folder. It talks to the backend API using `fetch`.
+
+```
+public/
+  assets/images/   subject and badge images
+  startpage.html   landing page
+  login.html       login and registration
+  login.js         login page logic
+  subjectpage.html subject selection
+  historyPage.html history topic page
+  gamepage.html    quiz game page
+  gamePage.js      quiz game logic
+  style.css        shared styles
+```
+
+### Pages
+
+| Page | Purpose |
+|---|---|
+| Start page | Entry point to the site |
+| Login | Sign in or create an account |
+| Subject page | Choose a subject to study |
+| History page | Topic page for the History subject |
+| Game page | Answer quiz questions and earn XP |
+
 ## Future Features
 
 1. Teachers to have a button `Assign to class` to set quizzes for their class
-2. More topics to be included from **non-STEM subjects** such as Geography, French, Spanish and etc.
-3. Feature rotating **game of the week**
+2. Teachers to be able to show and hide leaderboards for their classes
+3. Teachers would have the ability to lock games until certain quizzes are completed
+4. More topics to be included from **non-STEM subjects** such as Geography, French, Spanish and etc.
+5. Feature rotating **game of the week**
