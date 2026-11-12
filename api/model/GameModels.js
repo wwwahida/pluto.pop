@@ -33,7 +33,7 @@ class Question {
     static async delete(id) {
         const response = await db.query('DELETE FROM questions WHERE id = $1;', [id])
         if (response.rowCount === 0) {
-            throw new Error(`Question with id ${id} not found`)
+            return null
         }
         return { message: `Question with id ${id} deleted successfully` }
     }
@@ -52,6 +52,11 @@ class Question {
             WHERE id = $8 RETURNING *; `,
             [topic, question_type, question, answer, alt_answers, fun_fact, image_url, id]
         )
+
+        if (response.rowCount === 0) {
+            return null
+        }
+        
         return new Question(response.rows[0], { message: `Question with id ${id} updated successfully` })
     }
 }

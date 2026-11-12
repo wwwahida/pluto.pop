@@ -17,20 +17,22 @@ describe('GET /users', () => {
 })
 
 describe('GET /users/security-questions', () => {
-  test.failing('returns the security questions', async () => {
+  it('returns the security questions', async () => {
     const res = await request(app).get('/users/security-questions')
+    
+    expect(res.statusCode).toBe(200)
     expect(res.body).toEqual(securityQuestions)
   })
 })
 
 describe('POST /users', () => {
   it('returns 400 when fields are missing', async () => {
-    const res = await request(app).post('/users').send({ email: 'a@b.com' })
+    const res = await request(app).post('/auth/register').send({ email: 'a@b.com' })
     expect(res.statusCode).toBe(400)
   })
 
   it('returns 400 for an invalid role', async () => {
-    const res = await request(app).post('/users').send({
+    const res = await request(app).post('/auth/register').send({
       email: 'x@example.com',
       password: 'pw',
       security_question: securityQuestions[0],

@@ -87,10 +87,10 @@ describe('Question.delete', () => {
     expect(result).toEqual({ message: 'Question with id 4 deleted successfully' })
   })
 
-  it('throws when no row was deleted', async () => {
-    db.query.mockResolvedValueOnce({ rowCount: 0 })
+  it('returns null when no row was deleted', async () => {
+    db.query.mockResolvedValueOnce({ rowCount: 0, rows: [] })
 
-    await expect(Question.delete(4)).rejects.toThrow('Question with id 4 not found')
+    await expect(Question.delete(4)).resolves.toBeNull()
   })
 })
 
