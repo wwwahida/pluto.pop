@@ -2,9 +2,11 @@ const authController = require('../../../api/controllers/authController')
 const User = require('../../../api/model/User')
 const bcrypt = require('bcrypt')
 const securityQuestions = require('../../../api/utils/securityQuestions')
+const jwt = require('jsonwebtoken')
 
 jest.mock('../../../api/model/User')
 jest.mock('bcrypt')
+jest.mock('jsonwebtoken')
 
 const mockRes = () => {
   const res = {}
@@ -119,5 +121,86 @@ describe('register (remaining branches)', () => {
 
     expect(res.status).toHaveBeenCalledWith(500)
     expect(res.json).toHaveBeenCalledWith({ error: 'Registration failed' })
+  })
+})
+
+describe('login', () => {
+  it('returns 200 and a token for valid credentials', async () => {
+    const req = {
+      body: {
+        email: 's@b.com',
+        password: 'pw'
+      }
+    }
+
+    const res = mockRes()
+
+    User.findByEmail.mockResolvedValue({
+      user_id: 9,
+      email: 's@b.com',
+      password_hash: 'hashed',
+      role: 'student'
+    })
+
+    bcrypt.compare.mockResolvedValue(true)
+    jwt.sign.mockReturnValue('token')
+
+    await authController.login(req, res)
+
+    expect(User.findByEmail).toHaveBeenCalledWith('s@b.com')
+    expect(bcrypt.compare).toHaveBeenCalledWith('pw', 'hashed')
+    expect(jwt.sign).toHaveBeenCalledWith({ user_id: 9, role: 'student' }, process.env.JWT_SECRET, { expiresIn: 3600 })
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(res.json).toHaveBeenCalledWith({ message: 'Login successful', success: true, token: 'token', role: 'student' })
+  })
+
+  it('returns 401 for invalid credentials', async () => {
+    User.findByEmail.mockResolvedValue(null)
+
+    const req = {
+      body: {
+        email: 'test@b.com',
+        password: 'pw'
+      }
+    }
+
+    const res = mockRes()
+
+    await authController.login(req, res)
+
+    expect(res.status).toHaveBeenCalledWith(401)
+    expect(res.json).toHaveBeenCalledWith({ error: 'Invalid email or password' })
+  }) 
+
+  it('returns 400 if email or password is missing', async () => {
+    const req = {
+      body: {
+        email: 's@b.com'
+      }
+    }
+
+    const res = mockRes()
+    
+    await authController.login(req, res)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(User.findByEmail).not.toHaveBeenCalled()
+  })
+
+  it('returns 500 if an error occurs during login', async () => {
+    User.findByEmail.mockRejectedValue(new Error('Database error'))
+    const req = {
+      body: {
+        email: 's@b.com',
+        password: 'pw'
+      }
+    }
+
+    const res = mockRes()
+
+    await authController.login(req, res)
+
+    expect(res.status).toHaveBeenCalledWith(500)
+    expect(res.json).toHaveBeenCalledWith({ error: 'Login failed' })
   })
 })
