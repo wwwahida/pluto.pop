@@ -57,7 +57,9 @@ h1, h2 {
     box-shadow: 0 0 0 0.25rem rgba(179, 107, 168, 0.35);
 }
 
-.btn-quest {
+.btn-quest,
+.btn-quest-outline,
+.btn-submit {
   --bs-btn-color: #fff;
   --bs-btn-bg: var(--quest-purple-dark);
   --bs-btn-border-color: var(--quest-purple-dark);
@@ -112,21 +114,6 @@ h1, h2 {
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
-}
-
-
-
-.btn-submit {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: var(--quest-purple-dark);
-  --bs-btn-border-color: var(--quest-purple-dark);
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #6F3A68;
-  --bs-btn-hover-border-color: #6F3A68;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #6F3A68;
-  --bs-btn-active-border-color: #6F3A68;
-  --bs-btn-focus-shadow-rgb: 138, 75, 130;
 }
 
 .section-heading {
@@ -318,11 +305,39 @@ h1, h2 {
     width: auto;
     max-width: 100%;
 }
+.home-logo {
+    display: block;
+    height: clamp(3.5rem, 6vw, 5rem);
+    width: auto;
+}
+.quest-nav .logo-link:hover,
+.quest-nav .nav:focus-visible {
+    color: var(--quest-purple-dark);
+}
+
+.home-logo {
+    height: 7rem;
+    margin-block: -2rem;
+}
+
+.logo-link {
+    padding: 0;
+}
+.logo-link:focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 4px;
+}
+@media (min-width: 768px) {
+    .quest-nav .navbar-nav {
+        align-items: center;
+    }
+}
 
 .quiz-link[href]:hover,
 .quiz-link[href]:focus-visible {
     color: #8A4B82;
-    text-decoration: underline;
+    text-decoration: none;
+    transform: translateY(-5px);
 }
 
 .quiz-link:not([href]) {
@@ -361,30 +376,30 @@ h1, h2 {
   background-color: #BD69AB;
   color: #111;
 }
-/* .subject-card,
+
+.subject-card,
 .featured-card {
     transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
-
 .subject-card:hover,
-.featured-card:hover,
+.feature-card:hover,
 .subject-card:focus-visible,
-.featured-card:focus-visible {
+.feature-card:focus-visible {
     background: #D5DCEA;
     color: #000;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 } 
 
-.subject-card:focus-visible,
-.featured-card:focus-visible {
+/* .subject-card:focus-visible,
+.feature-card:focus-visible {
     outline: 3px solid #000;
     outline-offset: 3px;
-}
+} */
 
 @media (prefers-reduced-motion: reduce) {
     .subject-card,
-    .featured-card {
+    .feature-card {
         transition: none;
     }
-} */
+}

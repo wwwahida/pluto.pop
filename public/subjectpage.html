@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
     <nav class="navbar navbar-expand-md quest-nav">
         <div class="container-fluid px-md-5">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
@@ -20,8 +19,21 @@
             </button>
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="navbar-nav w-100 justify-content-between">
-                    <li class="nav-item"><a class="nav-link" href="login.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Subjects</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link logo-link" href="subjectpage.html">
+                            <img class="home-logo" src="./assets/images/home-logo.jpg" alt="StudyQuest home">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="subjects-dropdown" role="button" data-bs-toggle="dropdown">Subjects</a>
+                        <ul class="dropdown-menu subject-menu">
+                            <li class="dropdown-item subject-menu-item">History</li>
+                            <li class="dropdown-item subject-menu-item">Geography</li>
+                            <li class="dropdown-item subject-menu-item">English</li>
+                            <li class="dropdown-item subject-menu-item">French</li>
+                            <li class="dropdown-item subject-menu-item">Drama</li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="">Classroom</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Stats</a></li>
                     <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
@@ -74,6 +86,6 @@
         </div>
     </main>
 
-  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
