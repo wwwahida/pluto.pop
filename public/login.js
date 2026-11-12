@@ -48,9 +48,9 @@ async function login(e, role) {
             e.target.reset()
             sessionStorage.setItem('token', data.token)
             if (data.role === 'student') {
-                window.location.assign('subjectpage.html')
+                window.location.assign('/subjectpage')
             } else if (data.role === 'teacher') {
-                window.location.assign('startpage.html')
+                window.location.assign('/startpage')
             }
         } else {
             showToast("Login Failed", data.error, "danger")
