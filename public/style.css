@@ -205,20 +205,59 @@ h1, h2 {
     margin-top: 10px;
 }
 
-.question-row {
+/* .question-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
-}
+    gap: 100px;
+} */
 
 .next-button {
     background-color: #0F7D36;
     color: white;
     border: 0;
-    padding: 20px 14px;
+    padding: 20px 20px;
     border-radius: 12px 28px 28px 12px;
     font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+}
+
+/* Narrower screens: stacked, with the button under the photo */
+.question-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 1.25rem;
+}
+
+.question-row .question-image {
+    width: min(100%, 600px);      
+    height: auto;
+}
+
+.question-row .next-button {
+    align-self: center; 
+    height: auto;                   
+    min-width: 10rem;
+    padding: 0.75rem 0.5rem;
+}
+
+/* Wide screens: button beside the photo, photo stays centred */
+@media (min-width: 1100px) {
+    .question-row {
+        grid-template-columns: 1fr 600px 1fr;
+        column-gap: 1.5rem;
+        justify-items: stretch;
+    }
+
+    .question-row .question-image {
+        grid-column: 2;
+        width: 100%;
+    }
+
+    .question-row .next-button {
+        grid-column: 3;
+        justify-self: start;
+    }
 }
 
 .info-pill {
