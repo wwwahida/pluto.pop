@@ -90,7 +90,7 @@ questionForm.addEventListener("submit", (e) => {
     }
 
     feedback.textContent = "Correct";
-    funFact.textContent = `Fun fact: ${question.fun_fact}`
+    funFact.textContent = `${question.fun_fact}`
     questionForm.hidden = true;
     funFact.hidden = false;
     answerInput.disabled = true;
