@@ -57,6 +57,35 @@ This site is for **non-STEM** subjects, with our application showing **History**
     - Run `npm run dev` to run the server in development mode
     - Run `npm run start` to run the server in production mode
 
+## Docker
+StudyQuest can also be run using Docker, allowing the application to run inside a container without needing to install the project dependencies locally.
+
+### Prerequisities
+- Docker installed and running
+- A PostgreSQL database (e.g. Supabase or Neon)
+- A .env file containing the required environment variables
+
+### Running with Docker
+1. Ensure your .env file is configured in the project root:
+```
+DB_URL=<your_database_url>
+JWT_SECRET=<your_jwt_secret>
+PORT=3000
+```
+2. Build the Docker image from the project root:
+
+    ```docker build -t studyquest-api```
+
+3. Run the Docker container: 
+
+    ```docker run --env-file .env -p 3000:3000 --name studyquest-api studyquest-api```
+
+4. Open your browser and navigate to:
+
+    ```http://localhost:3000```
+    
+    The application should now be accessible through Docker
+
 ## Backend
 
 The backend is a REST API built with Node.js and Express, using PostgreSQL for storage. It handles user accounts, authentication and quiz questions, and returns JSON.
